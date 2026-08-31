@@ -1,0 +1,53 @@
+# Autofilled by tools/new_project_layout/probe_disc.py from your legal dump.
+# Review before shipping. Runtime quirks / overlay seeds still need hand work.
+
+[game]
+name = "King's Field"
+id = "SLPS-00017"
+players = 1
+exe = "disc/PSX.EXE"
+disc = ""
+load_address = "0x80010000"
+entry_pc = "0x80010100"
+text_size = "0x00000800"
+stack_base = "0x656B6166"
+
+# Digests are for data Track 01 (first BINARY FILE / TRACK 01).
+[prepare_disc]
+out_dir = "disc"
+bin_name = "disc1.bin"
+cue_name = "disc1.cue"
+boot_exe = "PSX.EXE"
+known_sizes = [30378432]
+known_md5 = [
+  "c2b8b1652407c6c8107b0c93e20624a6",
+]
+known_sha1 = [
+  "00bfd94ce99bf214b03bdaa07de99b9ca1466550",
+]
+known_crc32 = [
+  "54c8f64a",
+]
+
+[recompiler]
+seeds = "seeds/ghidra_funcs.txt"
+out_dir = "generated"
+strict = true
+
+[runtime]
+window_title = "King's Field Recompiled"
+memcard_dir = "saves"
+
+[video]
+renderer = "opengl"
+aspect_ratio = "4:3"
+
+[controller]
+default_mode = "digital"
+
+# Online mount gate: digests + track count + optional TOC fingerprint
+# (see docs/NETPLAY.md).
+[netplay]
+require_cue = true
+required_tracks = 1
+required_disc_fp = "a6c78d92723816147597273d3478b9ba6efd40795e9f072de4a7a6ea39dbf4ca"

@@ -1,0 +1,49 @@
+{
+  "format_version": 1,
+  "game": {
+    "name": "King's Field",
+    "id": "SLPS-00017",
+    "boot_exe": "PSX.EXE"
+  },
+  "marketing": {
+    "description": "A native recompilation setup host for King's Field.",
+    "publisher": "",
+    "year": "",
+    "region": "Japan",
+    "players": 1
+  },
+  "rom_identity": {
+    "cue_name": "disc1.cue",
+    "bin_name": "disc1.bin",
+    "track_counts": [
+      1
+    ],
+    "require_cue": true,
+    "data_track": {
+      "size": 30378432,
+      "md5": "c2b8b1652407c6c8107b0c93e20624a6",
+      "sha1": "00bfd94ce99bf214b03bdaa07de99b9ca1466550",
+      "crc32": "54c8f64a"
+    },
+    "disc_fp": "a6c78d92723816147597273d3478b9ba6efd40795e9f072de4a7a6ea39dbf4ca"
+  },
+  "exe": {
+    "load_address": "0x80010000",
+    "entry_pc": "0x80010100",
+    "text_size": "0x00000800",
+    "stack_base": "0x656B6166"
+  },
+  "seeds": {
+    "count": 9,
+    "source": "boot_exe_jal"
+  },
+  "warnings": [
+    "cue has only 1 TRACK — Track-01-only dumps fail multi-track netplay/catalog gates; prefer a full Redump cue.",
+    "SYSTEM.CNF missing; using the BIOS PSX.EXE fallback boot path. No serial is recoverable from the filesystem — set game_id manually in catalog_identity.json / game.toml."
+  ],
+  "notes": [
+    "entry_pc/load_address/text_size/stack_base taken from PS-X EXE header.",
+    "seeds are first-pass boot-EXE JAL targets (+ entry); expect to grow as overlays / runtime paths are discovered.",
+    "required_disc_fp is psxrecomp-toc-v1 (matches runtime DiscIdentity)."
+  ]
+}

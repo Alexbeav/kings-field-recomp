@@ -1,0 +1,12 @@
+# Auto-scanned JAL targets (+ entry) from PSX.EXE
+# entry=0x80010100 load=0x80010000 text_size=0x800
+# First-pass only — add overlay / runtime discoveries as you decomp.
+0x80010028
+0x800100F8
+0x80010100
+0x800101C4
+0x800101D4
+0x800101E4
+0x800101F4
+0x80010204
+0x80010214

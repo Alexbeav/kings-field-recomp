@@ -1,0 +1,32 @@
+{
+  "cue_path": "disc1.cue",
+  "cue_name": "disc1.cue",
+  "bin_name": "disc1.bin",
+  "track_count": 1,
+  "data_track_size": 30378432,
+  "data_track_md5": "c2b8b1652407c6c8107b0c93e20624a6",
+  "data_track_sha1": "00bfd94ce99bf214b03bdaa07de99b9ca1466550",
+  "data_track_crc32": "54c8f64a",
+  "boot_exe": "PSX.EXE",
+  "serial": "",
+  "serial_exe": "PSX.EXE",
+  "volume_id": "SLPS-00017",
+  "display_name": "King's Field",
+  "load_address": "0x80010000",
+  "entry_pc": "0x80010100",
+  "text_size": "0x00000800",
+  "stack_base": "0x656B6166",
+  "require_cue": true,
+  "required_disc_fp": "a6c78d92723816147597273d3478b9ba6efd40795e9f072de4a7a6ea39dbf4ca",
+  "boot_exe_sha256": "670f0ca702570fdb814a73ffa840b97a6584d2753072ea3b55c35541a7cec276",
+  "seed_count": 9,
+  "warnings": [
+    "cue has only 1 TRACK — Track-01-only dumps fail multi-track netplay/catalog gates; prefer a full Redump cue.",
+    "SYSTEM.CNF missing; using the BIOS PSX.EXE fallback boot path. No serial is recoverable from the filesystem — set game_id manually in catalog_identity.json / game.toml."
+  ],
+  "notes": [
+    "entry_pc/load_address/text_size/stack_base taken from PS-X EXE header.",
+    "seeds are first-pass boot-EXE JAL targets (+ entry); expect to grow as overlays / runtime paths are discovered.",
+    "required_disc_fp is psxrecomp-toc-v1 (matches runtime DiscIdentity)."
+  ]
+}
