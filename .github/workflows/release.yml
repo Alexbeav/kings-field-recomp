@@ -183,14 +183,16 @@ jobs:
           submodules: recursive
           fetch-depth: 1
 
-      - name: Verify setup executable name
+      - name: Verify setup identities
         shell: bash
         run: |
           set -euo pipefail
           if command -v python3 >/dev/null 2>&1; then
             python3 tests/test_setup_exe_name.py
+            python3 tests/test_generated_source_identity.py
           else
             python tests/test_setup_exe_name.py
+            python tests/test_generated_source_identity.py
           fi
 
       - name: Pin VERSION

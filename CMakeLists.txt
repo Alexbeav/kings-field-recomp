@@ -26,8 +26,8 @@ psxrecomp_add_game_runtime(psx-runtime
     DEFAULT_GAME_CONFIG_PATH "game.toml"
     MAX_PLAYERS 1
     APP_ICON "${CMAKE_CURRENT_SOURCE_DIR}/assets/psxrecomp.ico"
-    GEN_MARKER "generated/SLUS_01234_dispatch.c"
-    GEN_FULL_GLOB "generated/SLUS_01234_full_*.c"
+    GEN_MARKER "generated/PSX.EXE_dispatch.c"
+    GEN_FULL_GLOB "generated/PSX.EXE_full_*.c"
     CODEGEN_SETUP_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/codegen_setup.c"
 )
 

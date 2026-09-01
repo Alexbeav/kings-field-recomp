@@ -108,6 +108,17 @@ Public `v0.3.0` can request the wrong executable after the first local build.
 The `v0.3.3` source uses `King_s_Field_Recompiled` in CMake, setup, and packaging.
 The source parity gate and the exact-ZIP automatic-relaunch canary pass.
 
+## Known 0.3.3 issue
+
+The generated executable can return to Generate & Build after a successful
+build. The release still uses the scaffold marker `SLUS_01234`. The generator
+creates `PSX.EXE` sources for this title, so CMake links another setup host.
+
+The `v0.3.4` candidate uses `PSX.EXE` for the CMake marker, source glob, and
+setup marker. The full Windows build links the generated game sources. A hidden
+startup test reached frame 1,408 with no fatal state. A new exact ZIP is still
+required before release.
+
 ## License boundary
 
 Portfolio-owned source, scripts, configuration, and documentation use
