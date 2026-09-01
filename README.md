@@ -96,6 +96,12 @@ in release CI.
 Release 0.3.0 supports Windows x64. Linux and macOS remain in the workflow,
 but their release jobs are deferred under the Wave 2 Windows-first exception.
 
+## Known 0.3.0 issue
+
+The first automatic relaunch can ask Windows for the wrong executable name.
+The build is complete when `build-release\King_s_Field_Recompiled.exe` exists.
+Run that file directly. A corrected release needs a new version.
+
 ## License boundary
 
 Portfolio-owned source, scripts, configuration, and documentation use

@@ -1,6 +1,6 @@
 # King's Field knowledge report
 
-- Date: 2026-08-31
+- Date: 2026-09-01
 - Retail identity: Japan NTSC-J `SLPS-00017`
 - Architecture lane: source-only owned-input setup host
 - Release target: Windows x64, version `0.3.0`
@@ -10,11 +10,22 @@
 
 The operator confirmed gameplay in the private promoted package. This meets
 the `bootstrap_verified` boundary. The source-only Windows package builds
-locally. Exact-package setup, startup, and remote-byte gates remain open.
+locally. Public `v0.3.0` has a confirmed first-build relaunch defect.
+
+GitHub issue 10 supplied the exact Windows message. The setup host requested
+`kings_field__Recompiled.exe`. CMake linked
+`King_s_Field_Recompiled.exe`. The released ZIP has SHA-256
+`ADC8754976C2B0527EA48AE5D531739179B142F8D133A4785616E60DAEEB6003`.
+
+Branch `codex/issue-10-exe-name` aligns the three title-owned names. The
+source test passes. A Windows setup-host build also completed 163 of 163
+steps and linked the expected executable.
 
 ## Release controls
 
-- Framework: afe9ab299aab0eeba1cc31f81bc4baf4e7fb2ab7
+- Framework target source: afe9ab299aab0eeba1cc31f81bc4baf4e7fb2ab7
+- Current framework gitlink: e6d054de1538881cd81dcf3592de1f561afdbb5b
+  (CI test registration only)
 - recomp-ui: 4eda65430a431e5685ae0c515ebcd912c7843bff
 - RetComM Studio: 249422969c1c59ac2a1f8aa2299e876a7133998e
 - Distribution: owned input only
@@ -23,12 +34,38 @@ locally. Exact-package setup, startup, and remote-byte gates remain open.
 
 ## Open gates
 
-1. Complete exact-package setup and a 10-second startup.
-2. Run the regional and title-risk canaries from exact ZIPs.
-3. Audit every downloaded private draft.
-4. Bind publication authorization to the exact release manifest.
+1. Create a new release version. Do not replace `v0.3.0`.
+2. Complete setup from the exact corrected ZIP.
+3. Make sure that the first automatic relaunch starts the linked executable.
+4. Complete a 10-second startup and a clean exit.
+5. Repeat the remote-byte audit and publication authorization.
 
 ## Corpus consulted
 
 The release work uses PSX-PUB-004, PSX-PUB-006, PSX-WIN-004,
-PSX-WIN-005, PSX-WIN-006, and PSX-PUB-011.
+PSX-WIN-005, PSX-WIN-006, PSX-PUB-011, and PSX-SCAFFOLD-006.
+
+For issue 10, the corpus search included the findings registry, finding
+candidates, failure catalog, and regression ledger. PSX-SCAFFOLD-006 and
+FAIL-092 matched the executable-name owner. Their original gate covered
+packaging. It did not cover the deferred first-build relaunch.
+
+## Reusable regression
+
+`tests/test_setup_exe_name.py` compares the CMake output name, setup-host
+forwarding name, and release-packager name. The release workflow runs this
+test before it builds any setup host.
+
+## Quality debt
+
+| Debt | Owner | User impact | Evidence or containment | Removal gate |
+|---|---|---|---|---|
+| Public `v0.3.0` first-build relaunch | King's Field release | Windows reports that the built executable is missing | Issue 10; run the linked `King_s_Field_Recompiled.exe` directly | Publish a new exact ZIP after the complete release process passes |
+| Deferred helper keeps a pre-configure name | psxrecomp setup host | Other renamed titles can fail after a successful build | 22 of 24 Wave 2 sources have static name differences; only King's Field is reproduced | Add a framework regression and derive the helper target from CMake output |
+
+## Knowledge-base actions
+
+- Updated PSX-SCAFFOLD-006 with the first-build relaunch boundary.
+- Added FAIL-098 for the Windows missing-executable message.
+- Updated the regression ledger with the King's Field source test.
+- Selected a second punctuation-heavy Wave 2 title as the next consumer.

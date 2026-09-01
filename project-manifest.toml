@@ -32,4 +32,4 @@ version = "0.3.0"
 platform = "windows-x64"
 graduation_state = "bootstrap_verified"
 private_gameplay_confirmed = true
-public_package_status = "local_candidate_built"
+public_package_status = "v0.3.0_relaunch_defect_fix_prepared"
