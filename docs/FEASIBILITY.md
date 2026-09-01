@@ -18,3 +18,10 @@ the release packager. A new version must repeat the complete release process.
 
 The package must not contain a disc, retail BIOS, generated retail code, save,
 capture, prebuilt playable executable, or private absolute path.
+
+## v0.3.3 executable-name correction
+
+Public `v0.3.0` can complete a build and then request the wrong executable.
+The corrected source uses `King_s_Field_Recompiled` in all owned name fields.
+The 24-title source parity gate passes.
+The exact-ZIP automatic-relaunch canary also passes.

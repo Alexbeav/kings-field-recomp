@@ -3,7 +3,7 @@
 - Date: 2026-09-01
 - Retail identity: Japan NTSC-J `SLPS-00017`
 - Architecture lane: source-only owned-input setup host
-- Release target: Windows x64, version `0.3.0`
+- Release target: Windows x64, version `0.3.3`
 - License boundary: portfolio files use GPL-3.0-only; dependencies keep their licenses
 
 ## Current state
@@ -69,3 +69,10 @@ test before it builds any setup host.
 - Added FAIL-098 for the Windows missing-executable message.
 - Updated the regression ledger with the King's Field source test.
 - Selected a second punctuation-heavy Wave 2 title as the next consumer.
+
+## v0.3.3 setup correction
+
+The source now uses `King_s_Field_Recompiled` as the only setup executable name.
+The batch source gate passes.
+The exact-ZIP automatic-relaunch canary passes for the corrected source.
+The remote release audit remains open. Public `v0.3.0` remains unchanged.

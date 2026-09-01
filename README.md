@@ -102,6 +102,12 @@ The first automatic relaunch can ask Windows for the wrong executable name.
 The build is complete when `build-release\King_s_Field_Recompiled.exe` exists.
 Run that file directly. A corrected release needs a new version.
 
+## Corrected setup relaunch
+
+Public `v0.3.0` can request the wrong executable after the first local build.
+The `v0.3.3` source uses `King_s_Field_Recompiled` in CMake, setup, and packaging.
+The source parity gate and the exact-ZIP automatic-relaunch canary pass.
+
 ## License boundary
 
 Portfolio-owned source, scripts, configuration, and documentation use
