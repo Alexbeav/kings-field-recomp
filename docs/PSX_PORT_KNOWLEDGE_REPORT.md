@@ -3,7 +3,7 @@
 - Date: 2026-09-01
 - Retail identity: Japan NTSC-J `SLPS-00017`
 - Architecture lane: source-only owned-input setup host
-- Release target: Windows x64, version `0.3.4`
+- Release target: Windows x64, Linux x64, macOS ARM64, and macOS x64; candidate version `0.3.5`
 - License boundary: portfolio files use GPL-3.0-only; dependencies keep their licenses
 
 ## Current state
@@ -37,8 +37,8 @@ Windows build completed 171 of 171 steps. A hidden startup test reached frame
 - recomp-ui: 4eda65430a431e5685ae0c515ebcd912c7843bff
 - RetComM Studio: 249422969c1c59ac2a1f8aa2299e876a7133998e
 - Distribution: owned input only
-- Platform claim: Windows x64 only
-- Deferred work: Linux x64, macOS ARM64, and macOS x64 CI jobs
+- Platform claim: pending exact-package gates on all four targets
+- Deferred work: exact-package native gates and R3/R4 publication
 
 ## Open gates
 
@@ -100,3 +100,10 @@ starts the rebuilt process, but that process is another setup host.
 The source replaces `SLUS_01234` with `PSX.EXE` in all generated-source paths.
 The source tests pass. The full Windows build compiles the generated game code.
 The bounded startup reaches game RAM with no fatal state.
+
+## v0.3.5 three-platform refresh
+
+The source now binds the package-only privacy correction and targets Windows
+x64, Linux x64, macOS ARM64, and macOS x64. The replacement build-only CI,
+complete archive audit, and native package gates remain required. This source
+change does not publish a release or claim platform support.
