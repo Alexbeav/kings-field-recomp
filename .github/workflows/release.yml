@@ -189,7 +189,7 @@ jobs:
           export DEBIAN_FRONTEND=noninteractive
           apt-get update
           apt-get install -y --no-install-recommends \
-            ca-certificates curl git libstdc++6 python3 python3-pip
+            ca-certificates curl git libstdc++6 python3 python3-pip unzip
           python3 -m pip install --no-cache-dir \
             'cmake==3.30.9' 'tomli==2.2.1'
 

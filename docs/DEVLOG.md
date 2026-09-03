@@ -103,3 +103,13 @@ compiler. The correction removes those declarations and adds a registered
 source guard. `PSX-BUILD-024` and `FAIL-126` record the reusable rule. The next
 background CI run must prove the exact old-compiler link before this canary can
 advance.
+
+Workflow `33751393429` proved that correction by linking the setup host with
+GCC/G++ 9.4 and creating the Linux ZIP. The next archive gate could not inspect
+the ZIP because the minimal Ubuntu 20.04 container did not contain `unzip`.
+The error was a missing inspection tool, not a missing mod catalog. The corpus
+consult returned `PSX-PUB-021` for the archive-content invariant and no reason
+to weaken it. The GitHub job log and runner-image issue history both prescribe
+installing the required archive tool in the container. The next attempt adds
+only `unzip` to the existing bootstrap dependency set and keeps every catalog
+gate unchanged.
