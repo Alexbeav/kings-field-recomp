@@ -88,3 +88,8 @@ finding. GCC documents that labels before declarations became standard in
 C23 and that compiler support starts with GCC 11. Framework source
 `effffcb7ad9b68e382d6d96b2b0a8751bf8f08a2` adds a null statement after the
 label and a source guard. This keeps the C11 release build behavior unchanged.
+
+The first workflow with that framework source stopped at its test-registration
+gate because the new Python guard was not registered. Framework source
+`01d1458641f46481e2a3b0523593d8d3c84f479a` registers it with CTest. This
+keeps the guard visible and runnable in every configured test build.
