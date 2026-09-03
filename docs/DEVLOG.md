@@ -80,3 +80,11 @@ before it reached the compatible inline command. That helper also uses
 `--retry-all-errors`. The workflow now uses the helper only when the installed
 curl accepts that option. Older release environments use the same pinned URL
 and hash through the compatible inline path.
+
+The next Focal build reached framework compilation. GCC 9.4 rejected the
+`retry_candidates` label in `overlay_loader.c` because the label directly
+preceded declarations. The mandatory corpus search found no matching build
+finding. GCC documents that labels before declarations became standard in
+C23 and that compiler support starts with GCC 11. Framework source
+`effffcb7ad9b68e382d6d96b2b0a8751bf8f08a2` adds a null statement after the
+label and a source guard. This keeps the C11 release build behavior unchanged.
