@@ -134,3 +134,11 @@ registered source guard is `test_codegen_host_posix_toolchain.py`.
 `PSX-PUB-023` records the reusable setup contract. A new exact package and a
 complete Athena generate, link, product-start, exit, and retry canary are still
 required.
+
+The first corrected package still opened the build-tools page. Its new error
+message proved that the POSIX branch ran, but its readiness check called the
+generic Python resolver. A failed Windows pack remained in the shared cache,
+so that resolver selected its `python.exe` before native `python3`. Framework
+source `b9c562b96bbd0032ec33c343923b2561c120c906` checks native `python3`
+or `python` directly on POSIX. The source guard now rejects the generic cached
+resolver in that branch. Another exact CI package and Athena run are required.
