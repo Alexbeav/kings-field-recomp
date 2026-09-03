@@ -46,3 +46,15 @@ recorded PC `0x80035448`, 795,038,575 guest cycles, zero automatic freeze dumps,
 and a null fatal state. The process was stopped after the bounded test. This
 result proves that the corrected product leaves setup mode. It does not prove
 interactive gameplay.
+
+# 2026-09-03 — portable Linux package canary
+
+The exact `v0.3.5` Linux archive built on Ubuntu 24.04 could not start on the
+Rocky Linux 9 qualification host. Its setup binary required `GLIBC_2.35` and
+`GLIBC_2.38`. The host supplies glibc 2.34.
+
+The contained correction pins the Linux job to an exact Ubuntu 20.04 container
+with glibc 2.31. It pins and verifies the two Focal Vulkan build-tool packages.
+The archive gate checks the setup host and both packaged emitters. It rejects a
+required glibc symbol newer than 2.31. Windows and macOS jobs keep their
+existing hosts.
