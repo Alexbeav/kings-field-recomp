@@ -369,7 +369,7 @@ jobs:
           SHA=12b34280415ec8418c864408b93d008a20a6530687ee613d60bfbd20411f2785
           URL="https://github.com/libsdl-org/SDL/releases/download/release-${VER}/SDL3-${VER}.tar.gz"
           TAR=".cache/SDL3-${VER}.tar.gz"
-          curl -fsSL --http1.1 --retry 5 --retry-all-errors --retry-delay 2 -o "${TAR}" "${URL}"
+          curl -fsSL --http1.1 --retry 5 --retry-connrefused --retry-delay 2 -o "${TAR}" "${URL}"
           echo "${SHA}  ${TAR}" | sha256sum -c -
           rm -rf "${OUT}.extracting"
           mkdir -p "${OUT}.extracting"

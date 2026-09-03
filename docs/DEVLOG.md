@@ -68,3 +68,9 @@ The second contained run passed the identity test. The Linux dependency step
 then waited for an interactive time-zone selection while it configured
 `tzdata`. The next replacement keeps package installation non-interactive and
 sets `TZ=Etc/UTC`. The stopped Linux job did not reach a build or package step.
+
+The third contained run installed all Linux dependencies and reached SDL3
+source prefetch. Ubuntu 20.04 supplies curl 7.68.0, but the existing command
+used `--retry-all-errors`, which curl added in 7.71.0. The compatible command
+uses `--retry-connrefused`, available since curl 7.52.0, and keeps the exact
+archive hash check. The failed job did not reach a build or package step.
