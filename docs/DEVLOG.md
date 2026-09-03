@@ -93,3 +93,13 @@ The first workflow with that framework source stopped at its test-registration
 gate because the new Python guard was not registered. Framework source
 `01d1458641f46481e2a3b0523593d8d3c84f479a` registers it with CTest. This
 keeps the guard visible and runnable in every configured test build.
+
+The registered-guard run compiled all 527 Linux objects with GCC/G++ 9.4, then
+stopped at the final link. `main.cpp` requested the C++-mangled
+`fntrace_is_game_started()` symbol although linked `fntrace.c.o` contains the C
+implementation. The caller already includes `fntrace.h`, which owns the C ABI,
+but two redundant block-scope declarations bypassed that contract on the old
+compiler. The correction removes those declarations and adds a registered
+source guard. `PSX-BUILD-024` and `FAIL-126` record the reusable rule. The next
+background CI run must prove the exact old-compiler link before this canary can
+advance.
