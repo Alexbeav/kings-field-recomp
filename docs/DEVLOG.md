@@ -58,3 +58,8 @@ with glibc 2.31. It pins and verifies the two Focal Vulkan build-tool packages.
 The archive gate checks the setup host and both packaged emitters. It rejects a
 required glibc symbol newer than 2.31. Windows and macOS jobs keep their
 existing hosts.
+
+The first contained run stopped in a title identity test because Ubuntu 20.04
+uses Python 3.8, which predates the standard `tomllib` module. The replacement
+workflow pins the `tomli` backport for that test only. No build or package step
+ran in the stopped attempt.
