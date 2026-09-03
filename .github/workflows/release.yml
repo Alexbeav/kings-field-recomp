@@ -265,6 +265,8 @@ jobs:
       - name: Install deps (Linux)
         if: runner.os == 'Linux'
         run: |
+          export DEBIAN_FRONTEND=noninteractive
+          export TZ=Etc/UTC
           SUDO=''
           if command -v sudo >/dev/null 2>&1; then SUDO=sudo; fi
           ${SUDO} apt-get update

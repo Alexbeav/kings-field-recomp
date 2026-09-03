@@ -63,3 +63,8 @@ The first contained run stopped in a title identity test because Ubuntu 20.04
 uses Python 3.8, which predates the standard `tomllib` module. The replacement
 workflow pins the `tomli` backport for that test only. No build or package step
 ran in the stopped attempt.
+
+The second contained run passed the identity test. The Linux dependency step
+then waited for an interactive time-zone selection while it configured
+`tzdata`. The next replacement keeps package installation non-interactive and
+sets `TZ=Etc/UTC`. The stopped Linux job did not reach a build or package step.
