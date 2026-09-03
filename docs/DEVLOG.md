@@ -155,3 +155,23 @@ ran cached pack files instead of Athena's installed tools. A standalone check
 with Athena's native path ran every required command. The next contained
 framework correction prevents cached-pack path activation and cached-pack
 Python selection on POSIX. The source guard covers both rules.
+
+Workflow `33759317013` passed all four platform jobs and skipped its release
+job. Its exact Linux archive is 28,045,114 bytes with SHA-256
+`443C2B70C221F572A4A25B6F878BA077CD0751A09373C82A33D5A36831EB9DD6`.
+The complete 2,258-entry audit passed. Athena received the same bytes, kept
+the `GLIBC_2.29` setup-host floor, passed the native-tool gate, and verified
+the owned SLPS-00017 input.
+
+Generate and rebuild then stopped during CMake configure. The CMake cache
+showed that `psxrecomp_cli.py` had independently selected CMake, Ninja, Clang,
+and Clang++ from the failed shared Windows pack. The cached compilers require
+`GLIBCXX_3.4.30`, which Athena does not provide. The setup process environment
+was clean, so the remaining leak is inside the Python rebuild helper. This is
+an extension of `PSX-PUB-023` and `FAIL-127`, not a new subsystem.
+
+The next contained correction makes the Python rebuild helper use only native
+tools on POSIX and prevents it from downloading the Windows pack. Windows
+behavior stays unchanged. The registered source test covers this route. A new
+exact package must pass generate, link, product start, exit, and retry on
+Athena before the correction can expand to the other titles.
