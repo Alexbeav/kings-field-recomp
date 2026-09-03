@@ -113,3 +113,24 @@ to weaken it. The GitHub job log and runner-image issue history both prescribe
 installing the required archive tool in the container. The next attempt adds
 only `unzip` to the existing bootstrap dependency set and keeps every catalog
 gate unchanged.
+
+Workflow `33751936278` then passed all four build jobs. The exact Linux archive
+is 28,057,609 bytes with SHA-256
+`DAFBDA0DE087F4EAD6EA3DE68C8694886C6D2942533304DDC96F42A052A085BF`.
+Athena received the same bytes. Its setup host requires at most `GLIBC_2.29`;
+both emitters require at most `GLIBC_2.14`. The launcher opened, stayed
+responsive, and closed cleanly in two native runs.
+
+The owned SLPS-00017 setup route then exposed `FAIL-127`. The POSIX setup host
+downloaded the Windows `cmake-clang-v1` pack and failed when it tried to run
+`bin/cmake.exe`. Athena already has native CMake, Ninja, Python, GCC, and G++.
+The required corpus and public-source searches found no exact prior fix. The
+official Linux and macOS build routes use these native tools.
+
+Framework source `30e6cb0dc7633040f706a17bc499320619ba481b` accepts runnable
+native CMake, Ninja, Python, and C/C++ compilers on POSIX. It suppresses the
+Windows pack update route there and keeps Windows behavior unchanged. The
+registered source guard is `test_codegen_host_posix_toolchain.py`.
+`PSX-PUB-023` records the reusable setup contract. A new exact package and a
+complete Athena generate, link, product-start, exit, and retry canary are still
+required.
