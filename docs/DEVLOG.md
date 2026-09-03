@@ -74,3 +74,9 @@ source prefetch. Ubuntu 20.04 supplies curl 7.68.0, but the existing command
 used `--retry-all-errors`, which curl added in 7.71.0. The compatible command
 uses `--retry-connrefused`, available since curl 7.52.0, and keeps the exact
 archive hash check. The failed job did not reach a build or package step.
+
+The next run showed that the workflow selected the framework prefetch helper
+before it reached the compatible inline command. That helper also uses
+`--retry-all-errors`. The workflow now uses the helper only when the installed
+curl accepts that option. Older release environments use the same pinned URL
+and hash through the compatible inline path.
