@@ -142,3 +142,16 @@ so that resolver selected its `python.exe` before native `python3`. Framework
 source `b9c562b96bbd0032ec33c343923b2561c120c906` checks native `python3`
 or `python` directly on POSIX. The source guard now rejects the generic cached
 resolver in that branch. Another exact CI package and Athena run are required.
+
+Workflow `33757214470` passed all four platform jobs and skipped the release
+job. Its exact Linux archive is 28,047,405 bytes with SHA-256
+`92791C5ED041D84484916047EC9F86B7AAB4BA686ACE5C32F3BBA9BF713F1485`.
+Athena received the same bytes and kept the `GLIBC_2.29` setup-host floor.
+
+The exact package still rejected the native tools. A process trace showed that
+setup initialization prepended the failed shared Windows-pack cache before
+the host path. The checks for `cmake`, `python3`, `ninja`, and `cc` therefore
+ran cached pack files instead of Athena's installed tools. A standalone check
+with Athena's native path ran every required command. The next contained
+framework correction prevents cached-pack path activation and cached-pack
+Python selection on POSIX. The source guard covers both rules.
