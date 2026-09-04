@@ -1,6 +1,6 @@
 # King's Field release feasibility
 
-Status: `bootstrap_verified`; four-platform `v0.3.5` package pending exact-package gates
+Status: `bootstrap_verified`; four-platform `v0.3.6` package pending exact-package gates
 
 The operator confirmed that the promoted private build reaches gameplay. This
 meets the `bootstrap_verified` boundary. The source-only Windows package
@@ -49,3 +49,11 @@ macOS Intel x64. The setup package uses an additive framework correction that
 excludes two non-SDK helpers with developer-machine paths. Each exact package
 must pass the payload, setup, startup, responsiveness, and clean-exit gates on
 its declared platform before publication.
+
+## 2026-09-04 v0.3.6 POSIX setup-copy candidate
+
+This candidate pins PSXRecomp 08ec704a974b1f3a16335b4afeb340b9eff19926 and recomp-ui be8ac1d03ee19d55394b5a5f2d9d1506edd56659.
+Linux and macOS packages use native CMake, Ninja, Python, C, and C++ tools.
+Windows keeps the portable toolchain route. This change does not change game
+code or the graduation state. Build-only CI and every exact-package release
+gate must pass before publication.
